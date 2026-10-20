@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -40 80 80" width="80" height="80">
+  <!-- Rose cluster for the frame corners; animated as one piece -->
+  <defs>
+    <g id="rose">
+      <circle r="13" fill="#E6C3B6"/>
+      <circle r="9" fill="#D9A998"/>
+      <circle r="4.5" fill="#C98F7C"/>
+      <path d="M-9 -2 Q-4 -10 4 -8 M9 2 Q4 10 -4 8 M-5 4 Q-7 -3 0 -5" fill="none" stroke="#B87A67" stroke-width="1.2" stroke-linecap="round"/>
+    </g>
+    <g id="leaf">
+      <path d="M0 0 C8 -9 22 -9 30 0 C22 9 8 9 0 0 Z" fill="#8A9A7B"/>
+      <path d="M3 0 H26" stroke="#6F7F62" stroke-width=".8"/>
+    </g>
+  </defs>
+  <use href="#leaf" transform="rotate(-130)"/>
+  <use href="#leaf" transform="rotate(-70) scale(.85)"/>
+  <use href="#leaf" transform="rotate(95) scale(.9)"/>
+  <use href="#leaf" transform="rotate(30) scale(.75)"/>
+  <use href="#rose"/>
+  <use href="#rose" transform="translate(12 20) scale(.62)"/>
+  <circle cx="-14" cy="-18" r="4" fill="#D9A998"/>
+</svg>
