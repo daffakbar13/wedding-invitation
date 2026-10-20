@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-24 -24 48 48" width="48" height="48">
+  <!-- Single blush rose head with two sage leaves; sits on top of a CSS stem -->
+  <path d="M-2 14 C-14 8 -22 14 -24 20 C-14 22 -6 20 -2 14 Z" fill="#8A9A7B"/>
+  <path d="M2 14 C14 8 22 14 24 20 C14 22 6 20 2 14 Z" fill="#76866A"/>
+  <circle r="14" fill="#E6C3B6"/>
+  <path d="M-14 0 C-14 -10 -4 -15 4 -13 C12 -11 15 -3 13 4" fill="#D9A998"/>
+  <circle r="9" fill="#D9A998"/>
+  <circle cx="1" cy="-1" r="4.5" fill="#C98F7C"/>
+  <path d="M-9 -2 Q-4 -10 4 -8 M9 2 Q4 10 -4 8 M-5 4 Q-7 -3 0 -5" fill="none" stroke="#B87A67" stroke-width="1.2" stroke-linecap="round"/>
+</svg>

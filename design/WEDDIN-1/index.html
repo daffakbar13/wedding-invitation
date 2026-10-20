@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="office-states" content="loading,cover,envelope-open,curtain-opening,opened,details,gallery,wish-invalid,wish-sent,opened-id,not-found,fallback">
+  <title>Daffa &amp; Alvina — Wedding Invitation (WEDDIN-1 mockup)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-state="loading">
+  <!-- Outside area: colour comes from settings.outsideColor (default white) -->
+  <div class="stage">
+    <main class="phone" id="app" aria-live="polite">
+
+      <!-- Language switch: always visible, switches all texts without reload -->
+      <div class="lang-bar">
+        <div class="lang-switch" role="group" aria-label="Language" data-i18n-aria="language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="id" aria-pressed="false">ID</button>
+        </div>
+      </div>
+
+      <!-- LOADING -->
+      <section class="screen screen-loading" aria-label="Loading">
+        <div class="monogram monogram-pulse" aria-hidden="true"><span>D</span><i>&amp;</i><span>A</span></div>
+        <p class="muted" data-i18n="loading">Preparing your invitation…</p>
+      </section>
+
+      <!-- NOT FOUND (unknown or altered token) -->
+      <section class="screen screen-notfound">
+        <div class="nf-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="64" height="64"><rect x="8" y="16" width="48" height="34" rx="4" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M8 20l24 17 24-17" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="48" cy="46" r="10" fill="var(--paper)" stroke="currentColor" stroke-width="2.5"/><path d="M48 41v6M48 50.5v.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </div>
+        <h1 class="nf-title" data-i18n="nfTitle">Invitation not found</h1>
+        <p class="nf-body" data-i18n="nfBody">This link is not valid or has been changed. Please open the link exactly as it was sent to you.</p>
+      </section>
+
+      <!-- COVER: full-bleed photo, names fade in, then the floral frame rises with the button -->
+      <section class="screen screen-cover">
+        <div class="cover-photo" role="img" aria-label="Photo of Daffa and Alvina"><span class="photo-hint">couple photo · black &amp; white</span></div>
+        <div class="cover-titles">
+          <p class="eyebrow" data-i18n="weddingOf">The Wedding of</p>
+          <h1 class="names names-cover"><span>Daffa</span> <i>&amp;</i> <span>Alvina</span></h1>
+          <p class="date-short">13 · 02 · 2027</p>
+        </div>
+        <!-- 3D envelope: tilts with the phone, opens on the button -->
+        <div class="cover-envelope">
+          <div class="env-scene">
+            <div class="env-float">
+              <div class="env">
+                <div class="env-back"></div>
+                <div class="env-card">
+                  <p class="monogram-text">D<i>&amp;</i>A</p>
+                  <p class="small" data-i18n="invitedLine">We are delighted to invite you to our wedding.</p>
+                </div>
+                <div class="env-front">
+                  <p class="muted small" data-i18n="dear">Dear,</p>
+                  <p class="guest-name" data-guest>Budi Santoso</p>
+                </div>
+                <div class="env-flap"></div>
+                <div class="env-seal" aria-hidden="true"><span class="seal-half l"></span><span class="seal-half r"></span><b>DA</b></div>
+              </div>
+            </div>
+            <div class="blooms" aria-hidden="true">
+              <span class="bloom e-tl"><img src="assets/bloom.svg" alt=""></span>
+              <span class="bloom e-br"><img src="assets/bloom.svg" alt=""></span>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" id="open-btn">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M3 7l9 6 9-6M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            <span data-i18n="open">Open Invitation</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- INVITATION -->
+      <div class="invitation">
+        <!-- HERO: the stage the curtains open onto -->
+        <section class="sec sec-hero">
+          <!-- Scene: layers at real depths; the camera dollies forward on open -->
+          <div class="scene">
+          <div class="hero-photo" role="img" aria-label="Photo of Daffa and Alvina"><span class="photo-hint">couple photo</span></div>
+          <div class="petals" aria-hidden="true"></div>
+          <div class="curtains" aria-hidden="true">
+            <div class="curtain curtain-left"></div>
+            <div class="curtain curtain-right"></div>
+            <div class="garlands">
+              <span style="left:14%;height:306px"></span>
+              <span style="left:19%;height:198px"></span>
+              <span class="mid" style="left:26%;height:252px"></span>
+              <span class="mid" style="left:34%;height:162px"></span>
+              <span class="mid" style="left:44%;height:216px"></span>
+              <span class="mid" style="left:56%;height:144px"></span>
+              <span class="mid" style="left:66%;height:234px"></span>
+              <span class="mid" style="left:74%;height:180px"></span>
+              <span style="left:81%;height:234px"></span>
+              <span style="left:86%;height:324px"></span>
+            </div>
+            <div class="valance"></div>
+          </div>
+          </div>
+          <div class="hero-frame">
+            <img src="assets/frame.svg" alt="" class="frame-art">
+            <div class="blooms" aria-hidden="true">
+              <span class="bloom b-top"><img src="assets/rose.svg" alt=""></span>
+              <span class="bloom b-l"><img src="assets/bloom.svg" alt=""></span>
+              <span class="bloom b-r"><img src="assets/bloom.svg" alt=""></span>
+              <span class="bloom b-bl"><img src="assets/bloom.svg" alt=""></span>
+              <span class="bloom b-br"><img src="assets/bloom.svg" alt=""></span>
+            </div>
+            <div class="frame-inner">
+              <div class="rings" role="img" aria-label="Two gold wedding rings" data-i18n-aria="ringsLabel">
+                <div class="rings-spin"><div class="ring r1"></div><div class="ring r2"></div></div>
+              </div>
+              <p class="monogram-text">D<i>&amp;</i>A</p>
+              <p class="date-long" data-i18n="dayLong">Saturday, 13 February 2027</p>
+              <p class="to-guest"><span data-i18n="for">For</span> <strong data-guest>Budi Santoso</strong></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="sec sec-quote">
+          <p class="quote-mark" aria-hidden="true">“</p>
+          <p class="quote" data-i18n="quote" data-split>Two hearts, one journey. From this day on, every road we take, we take together.</p>
+          <div class="rose-row" aria-hidden="true">
+            <span class="stem" style="--h:70px;--i:3"><img src="assets/rose.svg" alt=""></span>
+            <span class="stem" style="--h:104px;--i:1"><img src="assets/rose.svg" alt=""></span>
+            <span class="stem" style="--h:84px;--i:5"><img src="assets/rose.svg" alt=""></span>
+            <span class="stem" style="--h:126px;--i:0"><img src="assets/rose.svg" alt=""></span>
+            <span class="stem" style="--h:92px;--i:4"><img src="assets/rose.svg" alt=""></span>
+            <span class="stem" style="--h:112px;--i:2"><img src="assets/rose.svg" alt=""></span>
+            <span class="stem" style="--h:76px;--i:6"><img src="assets/rose.svg" alt=""></span>
+          </div>
+        </section>
+
+        <section class="sec sec-greeting">
+          <h1 class="names names-lg reveal">Daffa <i>&amp;</i> Alvina</h1>
+          <div class="divider reveal" aria-hidden="true"><span></span>✦<span></span></div>
+          <h2 data-i18n="greetTitle">Together with our families</h2>
+          <p data-i18n="greetBody">With joy and gratitude, we invite you to share in the celebration of our marriage. Your presence and prayers mean the world to us.</p>
+        </section>
+
+        <section class="sec sec-couple">
+          <article class="person">
+            <div class="arch arch-sm arch-groom" role="img" aria-label="Photo of the groom"></div>
+            <p class="eyebrow" data-i18n="groom">The Groom</p>
+            <h3 class="fullname">Muhammad Daffa Raihan Akbar</h3>
+          </article>
+          <div class="amp" aria-hidden="true">&amp;</div>
+          <article class="person">
+            <div class="arch arch-sm arch-bride" role="img" aria-label="Photo of the bride"></div>
+            <p class="eyebrow" data-i18n="bride">The Bride</p>
+            <h3 class="fullname">Alvina Damayanti</h3>
+          </article>
+        </section>
+
+        <section class="sec sec-events">
+          <h2 data-i18n="eventsTitle">Save the Date</h2>
+          <div class="event-card">
+            <p class="eyebrow" data-i18n="akad">Holy Matrimony</p>
+            <p class="event-day" data-i18n="dayLong">Saturday, 13 February 2027</p>
+            <p class="event-time">08.00 – 10.00 WIB</p>
+          </div>
+          <div class="event-card">
+            <p class="eyebrow" data-i18n="reception">Reception</p>
+            <p class="event-day" data-i18n="dayLong">Saturday, 13 February 2027</p>
+            <p class="event-time">11.00 – 14.00 WIB</p>
+          </div>
+          <div class="venue">
+            <p class="venue-name">Graha Sentosa Ballroom</p>
+            <p class="muted small" data-i18n="venueAddr">Jl. Melati No. 12, South Jakarta</p>
+          </div>
+        </section>
+
+        <section class="sec sec-countdown">
+          <h2 data-i18n="countTitle">Counting down to our day</h2>
+          <div class="countdown" role="timer">
+            <div><b data-cd="d">0</b><span data-i18n="days">Days</span></div>
+            <div><b data-cd="h">0</b><span data-i18n="hours">Hours</span></div>
+            <div><b data-cd="m">0</b><span data-i18n="minutes">Minutes</span></div>
+            <div><b data-cd="s">0</b><span data-i18n="seconds">Seconds</span></div>
+          </div>
+        </section>
+
+        <section class="sec sec-gallery">
+          <h2 data-i18n="galleryTitle">Our Gallery</h2>
+          <p class="muted small sec-sub" data-i18n="gallerySub">A few moments from our journey together.</p>
+          <!-- 3D ring of photos: swipe to turn, tap to open (grid below is the no-3D fallback) -->
+          <div class="carousel" aria-roledescription="carousel" aria-label="Photos">
+            <div class="car-ring">
+              <button type="button" class="card-ph ph-1" data-card="0" style="--a:0deg" aria-label="Photo 1"></button>
+              <button type="button" class="card-ph ph-2" data-card="1" style="--a:60deg" aria-label="Photo 2"></button>
+              <button type="button" class="card-ph ph-3" data-card="2" style="--a:120deg" aria-label="Photo 3"></button>
+              <button type="button" class="card-ph ph-4" data-card="3" style="--a:180deg" aria-label="Photo 4"></button>
+              <button type="button" class="card-ph ph-5" data-card="4" style="--a:240deg" aria-label="Photo 5"></button>
+              <button type="button" class="card-ph ph-6" data-card="5" style="--a:300deg" aria-label="Photo 6"></button>
+            </div>
+          </div>
+          <div class="car-controls">
+            <button type="button" class="car-btn" data-turn="-1" aria-label="Previous photo">‹</button>
+            <span class="muted small" data-i18n="galleryHint">Swipe to turn</span>
+            <button type="button" class="car-btn" data-turn="1" aria-label="Next photo">›</button>
+          </div>
+          <div class="gallery">
+            <button type="button" class="ph ph-1 wide" data-photo="0" aria-label="Photo 1"></button>
+            <button type="button" class="ph ph-2" data-photo="1" aria-label="Photo 2"></button>
+            <button type="button" class="ph ph-3" data-photo="2" aria-label="Photo 3"></button>
+            <button type="button" class="ph ph-4 tall" data-photo="3" aria-label="Photo 4"></button>
+            <button type="button" class="ph ph-5" data-photo="4" aria-label="Photo 5"></button>
+            <button type="button" class="ph ph-6" data-photo="5" aria-label="Photo 6"></button>
+          </div>
+        </section>
+
+        <section class="sec sec-wishes">
+          <h2 data-i18n="wishesTitle">Wishes</h2>
+          <p class="muted small sec-sub" data-i18n="wishesSub">Send your prayers and wishes to the couple.</p>
+          <form class="wish-form" novalidate>
+            <label class="field">
+              <span data-i18n="nameLabel">Name</span>
+              <input type="text" name="name" autocomplete="name" data-guest-value>
+            </label>
+            <label class="field">
+              <span data-i18n="messageLabel">Your wish</span>
+              <textarea name="message" rows="3" data-i18n-placeholder="messagePh" placeholder="Write your wish for Daffa &amp; Alvina…" aria-describedby="wish-error"></textarea>
+              <span class="field-error" id="wish-error" data-i18n="messageError">Please write a wish before sending.</span>
+            </label>
+            <button type="submit" class="btn btn-primary btn-block">
+              <span class="btn-spinner" aria-hidden="true"></span>
+              <span data-i18n="send">Send wish</span>
+            </button>
+            <p class="wish-sent" role="status" data-i18n="sent">Thank you! Your wish has been sent.</p>
+          </form>
+          <p class="wish-count muted small"><b data-wish-count>3</b> <span data-i18n="wishesCount">wishes</span></p>
+          <ul class="wish-list"></ul>
+        </section>
+
+        <section class="sec sec-closing">
+          <div class="divider" aria-hidden="true"><span></span>✦<span></span></div>
+          <h2 data-i18n="thanks">Thank you</h2>
+          <p data-i18n="thanksBody">It would be an honour to celebrate this day with you.</p>
+          <p class="muted small" data-i18n="withLove">With love,</p>
+          <p class="names names-sm">Daffa <i>&amp;</i> Alvina</p>
+        </section>
+      </div>
+      <!-- Gallery lightbox -->
+      <div class="lightbox" role="dialog" aria-modal="true" aria-label="Photo" hidden>
+        <button type="button" class="lb-btn lb-close" aria-label="Close">✕</button>
+        <button type="button" class="lb-btn lb-prev" aria-label="Previous photo">‹</button>
+        <div class="lb-photo"></div>
+        <button type="button" class="lb-btn lb-next" aria-label="Next photo">›</button>
+        <p class="lb-count"></p>
+      </div>
+    </main>
+  </div>
+
+  <!-- Mockup-only controls (hidden with ?clean) -->
+  <nav class="statebar" aria-label="Mockup states">
+    <details>
+      <summary>States</summary>
+      <a href="#state=loading">loading</a>
+      <a href="#state=cover-intro">cover-intro</a>
+      <a href="#state=cover">cover</a>
+      <a href="#state=envelope-open">envelope-open</a>
+      <a href="#state=curtain-closed">curtain-closed</a>
+      <a href="#state=curtain-opening">curtain-opening</a>
+      <a href="#state=opened">opened</a>
+      <a href="#state=play">▶ play opening</a>
+      <a href="#state=details">details</a>
+      <a href="#state=gallery">gallery</a>
+      <a href="#state=wishes">wishes</a>
+      <a href="#state=wish-invalid">wish-invalid</a>
+      <a href="#state=wish-sent">wish-sent</a>
+      <a href="#state=opened-id">opened-id</a>
+      <a href="#state=not-found">not-found</a>
+      <a href="#state=fallback">fallback</a>
+      <p class="sb-label">Outside colour</p>
+      <div class="swatches">
+        <button type="button" data-outside="#FFFFFF" title="White (default)"></button>
+        <button type="button" data-outside="#F3EDE2" title="Cream"></button>
+        <button type="button" data-outside="#DDE3D5" title="Sage"></button>
+        <button type="button" data-outside="#2F2E2B" title="Charcoal"></button>
+      </div>
+    </details>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>

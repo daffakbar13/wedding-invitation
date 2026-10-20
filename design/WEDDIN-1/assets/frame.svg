@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -24 360 334" width="360" height="334">
+  <!-- Arched invitation frame; the rose clusters are separate (bloom.svg) so they can move -->
+  <path d="M40 300 V130 A120 120 0 0 1 280 130 V300 Z" fill="#FFFDF8" stroke="#B8955A" stroke-width="2"/>
+  <path d="M52 292 V132 A108 108 0 0 1 268 132 V292 Z" fill="none" stroke="#E7D7B8" stroke-width="1.2"/>
+  <g transform="translate(160 10)" fill="none" stroke="#B8955A" stroke-width="1.6" stroke-linecap="round">
+    <path d="M0 0 C-12 -14 -34 -12 -38 2 C-41 12 -28 16 -24 8"/>
+    <path d="M0 0 C12 -14 34 -12 38 2 C41 12 28 16 24 8"/>
+  </g>
+</svg>
