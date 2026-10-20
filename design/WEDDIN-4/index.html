@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="office-states" content="login-error,loading,error,owner-create,owner-disabled,editor-invalid,success,photos,attendee-added,whatsapp,whatsapp-sending,denied">
+  <title>Wedding Invitation Admin (WEDDIN-4 mockup)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-view="login" data-role="owner">
+
+  <!-- TOP BAR: links depend on the role (platform admin or owner) -->
+  <header class="topbar">
+    <div class="topbar-in">
+      <a class="brand" href="#state=owners" data-home>
+        <span class="monogram" aria-hidden="true">&amp;</span>
+        <span><b>Invitations</b><small data-role-label>Platform admin</small></span>
+      </a>
+      <nav class="nav" aria-label="Main" data-nav></nav>
+      <div class="who">
+        <div class="ui-lang" role="group" aria-label="Display language">
+          <button type="button" data-ui-lang="id" aria-pressed="true" title="Bahasa Indonesia">ID</button>
+          <button type="button" data-ui-lang="en" aria-pressed="false" title="English">EN</button>
+        </div>
+        <div class="who-text"><b data-who-name>Platform admin</b><span data-who-email>admin@undangan.app</span></div>
+        <span class="avatar" aria-hidden="true" data-who-initials>PA</span>
+        <a class="btn btn-ghost btn-sm" href="#state=login">Sign out</a>
+      </div>
+    </div>
+    <nav class="nav-mobile" aria-label="Main" data-nav></nav>
+  </header>
+
+  <!-- LOGIN: email + password or Google; only accounts the platform admin registered -->
+  <main class="view view-login">
+    <div class="login-card">
+      <div class="ui-lang login-lang" role="group" aria-label="Display language">
+        <button type="button" data-ui-lang="id" aria-pressed="true" title="Bahasa Indonesia">ID</button>
+        <button type="button" data-ui-lang="en" aria-pressed="false" title="English">EN</button>
+      </div>
+      <div class="login-head">
+        <span class="monogram" aria-hidden="true">&amp;</span>
+        <h1>Sign in</h1>
+        <p class="muted">Manage your wedding invitation and guests.</p>
+      </div>
+      <div class="alert" role="alert" data-login-error hidden>
+        <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 5.5v5.5M10 13.8v.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span data-login-error-text>Email or password is incorrect.</span>
+      </div>
+      <form class="login-form" novalidate>
+        <label class="field">Email
+          <input type="email" name="email" autocomplete="username" value="daffa.alvina@gmail.com" required>
+        </label>
+        <label class="field">Password
+          <input type="password" name="password" autocomplete="current-password" value="••••••••" required>
+        </label>
+        <button type="submit" class="btn btn-primary btn-block" data-login-submit><span>Sign in</span></button>
+      </form>
+      <div class="or">or</div>
+      <button type="button" class="btn btn-ghost btn-block" data-google>
+        <svg viewBox="0 0 18 18" width="18" height="18" aria-hidden="true"><path d="M17.6 9.2c0-.6-.1-1.2-.2-1.8H9v3.4h4.8a4.1 4.1 0 01-1.8 2.7v2.2h2.9c1.7-1.6 2.7-3.9 2.7-6.5z" fill="#4285F4"/><path d="M9 18c2.4 0 4.5-.8 5.9-2.2l-2.9-2.2c-.8.5-1.8.9-3 .9-2.3 0-4.3-1.6-5-3.7H1v2.3A9 9 0 009 18z" fill="#34A853"/><path d="M4 10.7a5.4 5.4 0 010-3.4V5H1a9 9 0 000 8l3-2.3z" fill="#FBBC05"/><path d="M9 3.6c1.3 0 2.5.5 3.4 1.3l2.6-2.6A9 9 0 001 5l3 2.3c.7-2.1 2.7-3.7 5-3.7z" fill="#EA4335"/></svg>
+        Continue with Google
+      </button>
+      <p class="login-foot">No account? Accounts are created by the platform admin.</p>
+    </div>
+  </main>
+
+  <!-- PLATFORM ADMIN: owners -->
+  <main class="view view-owners page">
+    <div class="page-head">
+      <div>
+        <h1>Owners</h1>
+        <p>Couples who can sign in and edit their own invitation.</p>
+      </div>
+      <button type="button" class="btn btn-primary" data-open-create>
+        <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        New owner
+      </button>
+    </div>
+    <div class="card" data-owners></div>
+  </main>
+
+  <!-- OWNER: invitation editor -->
+  <main class="view view-editor page">
+    <div class="page-head">
+      <div>
+        <h1>Invitation</h1>
+        <p>Changes show on every guest's link after you save.</p>
+      </div>
+    </div>
+    <div class="alert" role="alert" data-editor-error hidden style="margin-bottom:18px">
+      <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 5.5v5.5M10 13.8v.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <div><b>Not saved.</b> Every text is needed in each language you chose. Missing:<ul data-missing></ul></div>
+    </div>
+    <form class="editor-grid" data-editor novalidate>
+      <div class="editor-main">
+
+        <section class="card card-pad">
+          <h2>Couple</h2>
+          <p>Names appear as written in every invitation language.</p>
+          <div class="fields">
+            <div class="two">
+              <label class="field">Groom's short name<input name="groomShort" value="Daffa"></label>
+              <label class="field">Bride's short name<input name="brideShort" value="Alvina"></label>
+            </div>
+            <div class="two">
+              <label class="field">Groom's full name<input name="groomFull" value="Muhammad Daffa Raihan Akbar"></label>
+              <label class="field">Bride's full name<input name="brideFull" value="Alvina Damayanti"></label>
+            </div>
+            <!-- Optional line under each full name: "Putra kedua dari …" / "Putra dari …" / hidden -->
+            <div class="parents" data-parents></div>
+            <p class="small muted">Write parents' names with their titles, such as Bapak, Ibu, H., Hj. or Alm. On the English invitation, Bapak and Ibu become Mr. and Mrs.</p>
+          </div>
+        </section>
+
+        <section class="card card-pad">
+          <div class="sec-head">
+            <div>
+              <h2>Date &amp; venue</h2>
+              <p>Each event has its own time and place.</p>
+            </div>
+            <label class="field field-tz">Time zone
+              <select name="tz">
+                <option value="WIB" selected>WIB</option>
+                <option value="WITA">WITA</option>
+                <option value="WIT">WIT</option>
+              </select>
+            </label>
+          </div>
+          <div class="events" data-events></div>
+        </section>
+
+        <section class="card card-pad">
+          <h2>Languages</h2>
+          <p>Choose the languages your invitation uses. With two, guests can switch between them.</p>
+          <div class="radios" role="group" aria-label="Invitation languages">
+            <label class="radio"><input type="checkbox" name="languages" value="en" checked data-lang-check> English</label>
+            <label class="radio"><input type="checkbox" name="languages" value="id" checked data-lang-check> Indonesian</label>
+          </div>
+          <div data-default-wrap>
+            <p class="sub-label">Shown first</p>
+            <div class="radios">
+              <label class="radio"><input type="radio" name="defaultLang" value="en" checked> English</label>
+              <label class="radio"><input type="radio" name="defaultLang" value="id"> Indonesian</label>
+            </div>
+          </div>
+          <p class="lang-note" data-lang-note hidden></p>
+        </section>
+
+        <section class="card card-pad">
+          <h2>Texts</h2>
+          <p data-texts-hint>Write each text in English and Indonesian. Guests switch language on the invitation.</p>
+          <div class="tabs" role="tablist" aria-label="Text language">
+            <button type="button" role="tab" id="tab-en" aria-controls="panel-en" aria-selected="true" data-tab="en">English <span class="badge" data-badge="en"></span></button>
+            <button type="button" role="tab" id="tab-id" aria-controls="panel-id" aria-selected="false" data-tab="id">Indonesian <span class="badge" data-badge="id"></span></button>
+          </div>
+          <div class="tab-panel fields" id="panel-en" role="tabpanel" aria-labelledby="tab-en" data-panel="en"></div>
+          <div class="tab-panel fields" id="panel-id" role="tabpanel" aria-labelledby="tab-id" data-panel="id" hidden></div>
+        </section>
+
+        <section class="card card-pad">
+          <h2>Colours</h2>
+          <p>The theme stays the same; these colours change its look.</p>
+          <div class="colors">
+            <label class="color"><input type="color" name="primary" value="#56664A" data-color="primary"><span>Main<span data-hex="primary">#56664A</span></span></label>
+            <label class="color"><input type="color" name="accent" value="#B8955A" data-color="accent"><span>Accent<span data-hex="accent">#B8955A</span></span></label>
+            <label class="color"><input type="color" name="background" value="#FBF7F0" data-color="bg"><span>Background<span data-hex="bg">#FBF7F0</span></span></label>
+            <label class="color"><input type="color" name="outer" value="#FFFFFF" data-color="outer"><span>Outer colour<span data-hex="outer">#FFFFFF</span></span></label>
+          </div>
+          <p class="small muted" style="margin-top:10px">Outer colour fills the space around the invitation on wide screens.</p>
+        </section>
+
+      </div>
+
+      <aside class="preview" aria-label="Preview">
+        <!-- Real app: an iframe of the couple's own theme at /preview, fed the unsaved draft,
+             so custom themes preview exactly as guests will see them. -->
+        <div class="preview-head">
+          <p class="preview-label">Preview</p>
+          <span class="pill pill-draft" data-pv-state>Draft · not saved</span>
+        </div>
+        <div class="preview-tools">
+          <div class="tabs tabs-sm" role="group" aria-label="Preview language">
+            <button type="button" data-pv-lang="en" aria-pressed="true">EN</button>
+            <button type="button" data-pv-lang="id" aria-pressed="false">ID</button>
+          </div>
+          <button type="button" class="btn btn-ghost btn-sm" data-pv-full>
+            <svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M3 8V3h5M17 8V3h-5M3 12v5h5M17 12v5h-5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+            Full screen
+          </button>
+        </div>
+        <div class="preview-outer" data-preview>
+          <div class="pv-phone"><div class="pv-scroll" data-pv-body></div></div>
+        </div>
+        <p class="small muted pv-note">Scroll inside the phone to see the whole invitation, as the sample guest <b>Budi Santoso</b>.</p>
+      </aside>
+      <button type="button" class="btn btn-ghost pv-open-mobile" data-pv-full>
+        <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><rect x="5" y="2" width="10" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+        Preview invitation
+      </button>
+    </form>
+  </main>
+
+  <!-- OWNER: photos. Each photo is saved as soon as it finishes uploading. -->
+  <main class="view view-photos page">
+    <div class="page-head">
+      <div>
+        <h1>Photos</h1>
+        <p>Photos show on your invitation as soon as they finish uploading. JPG or PNG, up to 10 MB each.</p>
+      </div>
+    </div>
+    <section class="card card-pad">
+      <h2>Main photos</h2>
+      <p>Each one has its own place on the invitation.</p>
+      <div class="photo-slots" data-slots></div>
+    </section>
+    <section class="card card-pad" style="margin-top:18px">
+      <div class="gallery-head">
+        <div>
+          <h2>Gallery</h2>
+          <p>Up to 12 photos. Drag to change the order.</p>
+        </div>
+        <span class="pill pill-saved" data-gallery-count>6 / 12</span>
+      </div>
+      <div class="gallery-grid" data-gallery></div>
+    </section>
+  </main>
+
+  <!-- OWNER: attendees -->
+  <main class="view view-attendees page">
+    <div class="page-head">
+      <div>
+        <h1>Attendees</h1>
+        <p>Each guest gets a personal link that opens the invitation with their name.</p>
+      </div>
+    </div>
+    <section class="card card-pad" style="margin-bottom:18px">
+      <h2>Add a guest</h2>
+      <form class="add-form" data-add novalidate>
+        <label class="field" data-name-field>Guest name<span class="hint">As it should appear on the envelope, e.g. "Budi Santoso &amp; family"</span>
+          <input name="name" placeholder="Guest name" autocomplete="off">
+          <span class="field-error">Please enter a name.</span>
+        </label>
+        <label class="field field-group">WhatsApp number<span class="hint">Optional</span>
+          <input type="tel" name="phone" placeholder="0812 3456 7890" autocomplete="off" inputmode="tel">
+        </label>
+        <label class="field field-group">Group<span class="hint">Optional</span>
+          <select name="group" data-group-select></select>
+        </label>
+        <label class="field field-group" data-new-group hidden>New group name<span class="hint">e.g. "Teman Kantor"</span>
+          <input name="newGroup" placeholder="Group name" autocomplete="off">
+        </label>
+        <button type="submit" class="btn btn-primary">Add guest</button>
+      </form>
+    </section>
+    <div class="card">
+      <div class="att-toolbar" data-toolbar>
+        <label class="search">
+          <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13 13l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span class="sr-only">Search guests</span>
+          <input type="search" placeholder="Search guests by name" autocomplete="off" data-search>
+        </label>
+        <div class="chips" role="group" aria-label="Filter by group" data-chips></div>
+      </div>
+      <div data-attendees></div>
+    </div>
+  </main>
+
+  <!-- OWNER: WhatsApp message template and sending from the owner's own WhatsApp -->
+  <main class="view view-whatsapp page">
+    <div class="page-head">
+      <div>
+        <h1>WhatsApp</h1>
+        <p>Send each guest their personal link from your own WhatsApp.</p>
+      </div>
+    </div>
+    <div class="wa-grid">
+      <section class="card card-pad">
+        <h2>Message template</h2>
+        <p>Words in {curly brackets} are filled in for each guest.</p>
+        <div class="tabs" role="tablist" aria-label="Message language" data-wa-tabs>
+          <button type="button" role="tab" aria-selected="true" data-wa-tab="en">English</button>
+          <button type="button" role="tab" aria-selected="false" data-wa-tab="id">Indonesian</button>
+        </div>
+        <div class="tokens" aria-label="Insert">
+          <span class="small muted">Insert:</span>
+          <button type="button" class="chip" data-token="guest_name">Guest name</button>
+          <button type="button" class="chip" data-token="link">Personal link</button>
+          <button type="button" class="chip" data-token="couple">Couple</button>
+          <button type="button" class="chip" data-token="date">Date</button>
+          <button type="button" class="chip" data-token="venue">Venue</button>
+        </div>
+        <label class="field" data-wa-field>Message
+          <textarea rows="13" data-wa-text spellcheck="false"></textarea>
+          <span class="field-error">Keep {link} in the message so each guest gets their own invitation.</span>
+        </label>
+        <p class="small muted" style="margin-top:6px">Use *stars* for bold, as in WhatsApp.</p>
+        <div class="wa-actions">
+          <button type="button" class="btn btn-text" data-wa-reset>Reset to default</button>
+          <button type="button" class="btn btn-primary" data-wa-save>Save template</button>
+        </div>
+      </section>
+      <aside class="wa-side">
+        <p class="preview-label">Preview · Budi Santoso</p>
+        <div class="wa-chat"><div class="wa-bubble" data-wa-preview></div></div>
+      </aside>
+    </div>
+
+    <section class="card card-pad wa-send" data-wa-send>
+      <h2>Send invitations</h2>
+      <p>WhatsApp opens with the message ready for each guest, and you tap Send there. Nothing is sent automatically.</p>
+      <div data-wa-setup>
+        <div class="chips" role="group" aria-label="Send to group" data-wa-chips style="margin-top:14px"></div>
+        <label class="check" style="margin-top:12px"><input type="checkbox" data-wa-resend> Include guests I already sent to</label>
+        <div class="wa-start">
+          <p data-wa-summary></p>
+          <button type="button" class="btn btn-primary" data-wa-start>Start sending</button>
+        </div>
+      </div>
+      <div data-wa-run hidden></div>
+    </section>
+  </main>
+
+  <!-- OWNER opening the platform admin address -->
+  <main class="view view-denied page">
+    <div class="card denied">
+      <svg class="muted" viewBox="0 0 48 48" width="48" height="48" aria-hidden="true"><rect x="10" y="21" width="28" height="20" rx="4" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M16 21v-5a8 8 0 0116 0v5" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="24" cy="31" r="2.4" fill="currentColor"/></svg>
+      <h1>Access denied</h1>
+      <p class="muted"><code>/platform</code> is for the platform admin only. You are signed in as an owner.</p>
+      <a class="btn btn-primary" href="#state=editor">Go to my invitation</a>
+    </div>
+  </main>
+
+  <!-- Save bar (editor only) -->
+  <div class="savebar">
+    <div class="savebar-in">
+      <p class="status" data-save-status><span class="dot"></span><span>Unsaved changes</span></p>
+      <button type="button" class="btn btn-ghost" data-view-invite>View invitation</button>
+      <button type="button" class="btn btn-primary" data-save>Save changes</button>
+    </div>
+  </div>
+
+  <!-- Create owner -->
+  <div class="dialog-backdrop" data-dialog="create" hidden>
+    <form class="dialog" role="dialog" aria-modal="true" aria-labelledby="create-title" data-create novalidate>
+      <h2 id="create-title">New owner</h2>
+      <label class="field">Couple name<input name="couple" value="Rizky &amp; Nadia" required></label>
+      <label class="field">Sign-in email<span class="hint">Use their Google email to let them sign in with Google too.</span>
+        <input type="email" name="email" value="rizky.nadia@gmail.com" required>
+      </label>
+      <label class="field">Temporary password<span class="hint">Share it with the couple; they can sign in with Google instead.</span>
+        <input type="text" name="password" value="melati-27-senja">
+      </label>
+      <label class="field">Theme
+        <select name="theme" data-theme-select></select>
+      </label>
+      <div class="dialog-actions">
+        <button type="button" class="btn btn-ghost" data-close>Cancel</button>
+        <button type="submit" class="btn btn-primary">Create owner</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Disable owner -->
+  <div class="dialog-backdrop" data-dialog="disable" hidden>
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="disable-title">
+      <h2 id="disable-title">Disable <span data-disable-name>Rizky &amp; Nadia</span>?</h2>
+      <p class="muted">They will no longer be able to sign in, and every guest link to their invitation will show “Invitation not found”. You can enable them again later.</p>
+      <div class="dialog-actions">
+        <button type="button" class="btn btn-ghost" data-close>Cancel</button>
+        <button type="button" class="btn btn-danger" data-confirm-disable>Disable owner</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full-screen preview -->
+  <div class="dialog-backdrop pv-modal" data-dialog="preview" hidden>
+    <div class="pv-modal-in" role="dialog" aria-modal="true" aria-label="Invitation preview">
+      <div class="pv-modal-bar">
+        <span class="pill pill-draft" data-pv-state>Draft · not saved</span>
+        <div class="tabs tabs-sm" role="group" aria-label="Preview language">
+          <button type="button" data-pv-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-pv-lang="id" aria-pressed="false">ID</button>
+        </div>
+        <button type="button" class="btn btn-ghost btn-sm" data-close>Close</button>
+      </div>
+      <div class="pv-modal-stage" data-preview>
+        <div class="pv-phone pv-phone-lg"><div class="pv-scroll" data-pv-body></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Remove attendee -->
+  <div class="dialog-backdrop" data-dialog="remove" hidden>
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="remove-title">
+      <h2 id="remove-title">Remove <span data-remove-name>guest</span>?</h2>
+      <p class="muted">Their personal link will stop working.</p>
+      <div class="dialog-actions">
+        <button type="button" class="btn btn-ghost" data-close>Cancel</button>
+        <button type="button" class="btn btn-danger" data-confirm-remove>Remove</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" role="status" aria-live="polite" hidden>
+    <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span data-toast-text></span>
+  </div>
+
+  <!-- Mockup-only state switcher; hidden with ?clean -->
+  <nav class="statebar" aria-label="Mockup states" data-no-i18n>
+    <details>
+      <summary>States</summary>
+      <a href="#state=login">login</a>
+      <a href="#state=login-error">login-error</a>
+      <a href="#state=loading">loading (owners)</a>
+      <a href="#state=error">error (owners)</a>
+      <a href="#state=owners">owners</a>
+      <a href="#state=owner-create">owner-create</a>
+      <a href="#state=owner-disabled">owner-disabled</a>
+      <a href="#state=editor">editor</a>
+      <a href="#state=editor-invalid">editor-invalid</a>
+      <a href="#state=success">success (saved)</a>
+      <a href="#state=preview">preview (full screen)</a>
+      <a href="#state=photos">photos</a>
+      <a href="#state=photos-empty">photos-empty</a>
+      <a href="#state=empty">empty (attendees)</a>
+      <a href="#state=attendees">attendees</a>
+      <a href="#state=attendee-added">attendee-added</a>
+      <a href="#state=attendee-search">attendee-search</a>
+      <a href="#state=attendee-search-none">attendee-search-none</a>
+      <a href="#state=whatsapp">whatsapp</a>
+      <a href="#state=whatsapp-invalid">whatsapp-invalid</a>
+      <a href="#state=whatsapp-sending">whatsapp-sending</a>
+      <a href="#state=whatsapp-done">whatsapp-done</a>
+      <a href="#state=denied">denied</a>
+    </details>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>
