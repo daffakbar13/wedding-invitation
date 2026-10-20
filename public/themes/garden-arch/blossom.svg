@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 18" width="20" height="18">
+  <!-- One tile of a hanging blossom garland; repeat-y in CSS -->
+  <path d="M10 0 V18" stroke="#E7D7B8" stroke-width=".8"/>
+  <g fill="#FFFDF8" stroke="#E7D7B8" stroke-width=".5">
+    <circle cx="10" cy="5.8" r="3.2"/>
+    <circle cx="13.04" cy="8.01" r="3.2"/>
+    <circle cx="11.88" cy="11.59" r="3.2"/>
+    <circle cx="8.12" cy="11.59" r="3.2"/>
+    <circle cx="6.96" cy="8.01" r="3.2"/>
+  </g>
+  <circle cx="10" cy="9" r="1.6" fill="#D9BC7E"/>
+</svg>

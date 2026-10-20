@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 72" preserveAspectRatio="none">
+  <!-- Swagged valance across the top of the stage -->
+  <defs>
+    <linearGradient id="swag" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4E5D43"/>
+      <stop offset=".6" stop-color="#7D8D6F"/>
+      <stop offset="1" stop-color="#5F6F52"/>
+    </linearGradient>
+  </defs>
+  <path d="M0 0 H400 V22 Q350 70 300 22 Q250 70 200 22 Q150 70 100 22 Q50 70 0 22 Z" fill="url(#swag)"/>
+  <path d="M0 22 Q50 70 100 22 Q150 70 200 22 Q250 70 300 22 Q350 70 400 22" fill="none" stroke="#C9AB74" stroke-width="2"/>
+  <path d="M0 10 H400" stroke="#C9AB74" stroke-width="1.2" opacity=".7"/>
+  <g fill="#C9AB74">
+    <circle cx="100" cy="25" r="4"/><circle cx="200" cy="25" r="4"/><circle cx="300" cy="25" r="4"/>
+  </g>
+</svg>
