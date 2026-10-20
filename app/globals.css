@@ -1,0 +1,79 @@
+/*
+ * Core styles: the mobile-width column, the language switch and the core screens
+ * (not found). Themes style everything inside the column in their own CSS, scoped
+ * under .theme-<id>, and may override the --core-* and --switch-* tokens there.
+ */
+:root {
+  --outside: #FFFFFF;          /* settings.outsideColor, default white */
+  --column: 430px;
+
+  --core-paper: #FFFDF8;
+  --core-ink: #3B3A36;
+  --core-muted: #6E6A60;
+  --core-accent: #56664A;
+  --core-line: #E8E0D0;
+  --core-focus: #B8955A;
+  --core-font-display: "Didot", "Bodoni 72", "Bodoni MT", Georgia, "Times New Roman", serif;
+  --core-font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --switch-bg: rgba(255, 253, 248, .85);
+  --switch-line: var(--core-line);
+  --switch-ink: var(--core-muted);
+  --switch-active: var(--core-accent);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--outside);
+  color: var(--core-ink);
+  font: 16px/1.6 var(--core-font-body);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, p { margin: 0; }
+button { font: inherit; }
+:focus-visible { outline: 2px solid var(--core-focus); outline-offset: 3px; }
+
+/* ---------- Mobile-width column, centred on every screen size ---------- */
+.stage { min-height: 100vh; display: flex; justify-content: center; }
+.phone {
+  position: relative;
+  width: 100%;
+  max-width: var(--column);
+  min-height: 100vh;
+  background: var(--core-paper);
+  overflow: hidden;
+}
+@media (min-width: 480px) {
+  .phone { box-shadow: 0 0 0 1px rgba(59, 58, 54, .06), 0 20px 60px rgba(59, 58, 54, .12); }
+}
+
+/* ---------- Language switch ---------- */
+.lang-bar {
+  position: sticky; top: 0; z-index: 20;
+  height: 0; display: flex; justify-content: flex-end; align-items: flex-start;
+}
+.lang-switch {
+  margin: 14px 14px 0 0; padding: 3px;
+  display: inline-flex; gap: 2px;
+  background: var(--switch-bg);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--switch-line); border-radius: 999px;
+}
+.lang-switch button {
+  border: 0; background: transparent; cursor: pointer;
+  min-width: 40px; height: 30px; padding: 0 10px;
+  border-radius: 999px;
+  font-size: 12px; font-weight: 600; letter-spacing: .08em; color: var(--switch-ink);
+}
+.lang-switch button[aria-pressed="true"] { background: var(--switch-active); color: #fff; }
+
+/* ---------- Core screens ---------- */
+.core-screen {
+  min-height: 100vh; padding: 72px 28px 40px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; gap: 18px;
+}
+.core-notfound .nf-icon { color: var(--core-accent); }
+.core-notfound .nf-title { font: 400 30px/1.2 var(--core-font-display); }
+.core-notfound .nf-body { max-width: 300px; color: var(--core-muted); }
